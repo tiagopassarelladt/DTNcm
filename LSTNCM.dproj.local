@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/04/01 10:36:36.000.094,=rtl.dcp</Transaction>
+    <Transaction>2022/04/01 10:36:55.000.336,C:\Users\Tiago Passarella\Documents\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\Tiago Passarella\Documents\Embarcadero\Studio\Projects\DTNCM.dproj</Transaction>
+    <Transaction>2022/04/01 10:38:20.000.392,=D:\Dropbox\Componentes\DTNcm\TDTNCM.pas</Transaction>
+    <Transaction>2022/04/01 10:38:37.000.257,C:\Users\Tiago Passarella\Documents\Embarcadero\Studio\Projects\DTNCM.dproj=D:\Dropbox\Componentes\DTNcm\DTNCM.dproj</Transaction>
+    <Transaction>2022/04/01 10:55:47.000.063,D:\Dropbox\Componentes\DTNcm\DTNCM.dproj=D:\Dropbox\Componentes\DTNcm\NCM.dproj</Transaction>
+    <Transaction>2022/04/01 10:56:42.000.181,D:\Dropbox\Componentes\DTNcm\NCM.dproj=D:\Dropbox\Componentes\DTNcm\LSTNCM.dproj</Transaction>
+    <Transaction>2022/04/01 10:56:57.000.298,D:\Dropbox\Componentes\DTNcm\TDTNCM.pas=D:\Dropbox\Componentes\DTNcm\LNCM.pas</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.847,=RESTComponents.dcp</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.814,=dbrtl.dcp</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.871,=FireDACCommonDriver.dcp</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.836,=bindcomp.dcp</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.882,=FireDACCommon.dcp</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.859,=FireDAC.dcp</Transaction>
+    <Transaction>2022/04/01 10:57:04.000.825,=bindengine.dcp</Transaction>
+    <Transaction>2022/04/01 11:10:31.000.175,=IndySystem.dcp</Transaction>
+    <Transaction>2022/04/01 11:10:31.000.187,=IndyProtocols.dcp</Transaction>
+    <Transaction>2022/04/01 11:10:31.000.199,=IndyCore.dcp</Transaction>
+  </Transactions>
+</BorlandProject>

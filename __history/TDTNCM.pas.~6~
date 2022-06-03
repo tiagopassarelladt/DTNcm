@@ -1,0 +1,45 @@
+unit DTNCM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type TRetornoNCM = class
+     DataUltimaAtualizacao:TDate;
+     NCM:string;
+     Descrica:String;
+     DataIniciao:TDate;
+     DataFim:TDate;
+     TipoAto:string;
+     NumeroAto:string;
+     AnoAto:string;
+end;
+
+type
+  TDTNcm = class(TComponent)
+  private
+
+  protected
+
+  public
+      function DownloadTabelaNCM:TRetornoNCM;
+
+  published
+
+
+  end;
+
+  const
+   URLBaseSiscomex = 'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json';
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('DT Inovacao', [TDTNcm]);
+end;
+
+end.

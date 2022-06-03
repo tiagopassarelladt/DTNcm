@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0BE83762-C026-42BD-88ED-C051F2B4DB16}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="LSTNCM.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\Project3.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="LSTNCM">
+        <MSBuild Projects="LSTNCM.dproj"/>
+    </Target>
+    <Target Name="LSTNCM:Clean">
+        <MSBuild Projects="LSTNCM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LSTNCM:Make">
+        <MSBuild Projects="LSTNCM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project3">
+        <MSBuild Projects="Demo\Project3.dproj"/>
+    </Target>
+    <Target Name="Project3:Clean">
+        <MSBuild Projects="Demo\Project3.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project3:Make">
+        <MSBuild Projects="Demo\Project3.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="LSTNCM;Project3"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="LSTNCM:Clean;Project3:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="LSTNCM:Make;Project3:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

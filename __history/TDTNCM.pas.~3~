@@ -1,0 +1,29 @@
+unit DTNCM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TDTNcm = class(TComponent)
+  private
+
+  protected
+
+  public
+
+  published
+
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('DT Inovacao', [TDTNcm]);
+end;
+
+end.

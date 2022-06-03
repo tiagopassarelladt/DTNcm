@@ -1,0 +1,126 @@
+unit DTNCM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, System.Generics.Collections,REST.Types, REST.Client,
+  REST.Response.Adapter,FireDAC.Comp.Client;
+
+type TRetornoNCM = class
+     DataUltimaAtualizacao:TDate;
+     NCM:string;
+     Descrica:String;
+     DataIniciao:TDate;
+     DataFim:TDate;
+     TipoAto:string;
+     NumeroAto:string;
+     AnoAto:string;
+end;
+
+type
+  TDTNcm = class(TComponent)
+  private
+
+  protected
+
+  public
+      RetornolistaNCM:TList<TRetornoNCM>;
+      function DownloadTabelaNCM:TRetornoNCM;
+      constructor Create(AOwner: TComponent); override;
+      destructor Destroy; override;
+
+  published
+
+
+  end;
+
+  const
+   URLBaseSiscomex = 'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json';
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('DT Inovacao', [TDTNcm]);
+end;
+
+{ TDTNcm }
+
+constructor TDTNcm.Create(AOwner: TComponent);
+begin
+ inherited Create(AOwner);
+  RetornolistaNCM := TList<TRetornoNCM>.Create;
+end;
+
+destructor TDTNcm.Destroy;
+begin
+  RetornolistaNCM.Clear;
+  FreeAndNil(RetornolistaNCM);
+  inherited Destroy;
+end;
+
+function TDTNcm.DownloadTabelaNCM: TRetornoNCM;
+var
+  Request: TRESTRequest;
+  RestClient: TRESTClient;
+  RestAdapter:TRESTResponseDataSetAdapter;
+  RestResponse1:TRESTResponse;
+  data:TFDMemTable;
+  Json:string;
+  LIsta:TRetornoNCM;
+begin
+       try
+           Request                := TRESTRequest.Create(nil);
+           RestClient             := TRESTClient.Create(Request);
+           RestAdapter            := TRESTResponseDataSetAdapter.Create(nil);
+           RestResponse1          := TRESTResponse.Create(nil);
+           Data                   := TFDMemTable.Create(nil);
+           RestAdapter.Response   := RestResponse1;
+           RestAdapter.Dataset    := Data;
+           Request.Response       := RestResponse1;
+           Request.Client         := RestClient;
+           Request.Method         := TRESTRequestMethod.rmPOST;
+           Request.Client.BaseURL := URLBaseSiscomex;
+           Request.Timeout        := 180000;
+
+
+           Request.Execute;
+       Except
+          on E: Exception do
+          Begin
+             raise Exception.Create(e.Message);
+             Exit;
+          End;
+       End;
+       Request.Response.ContentType := 'application/json';
+       Root.AsJson := Request.Response.JSONText;
+       if Request.Response.StatusCode = 200 then
+       begin
+          Retorno.Mensagem := Root.Message;
+          data.First;
+          while not data.Eof do
+          begin
+               CadCategoria              := TCategoria.Create;
+               CadCategoria.Id_Categoria := data.FieldByName('id_categoria').AsString;
+               Categoria.Add(CadCategoria);
+
+               data.Next;
+          end;
+       end else
+       begin
+          retorno.Mensagem := Request.Response.JSONText;
+       end;
+    finally
+       Begin
+          Retorno.StatusCode := RestResponse1.StatusCode;
+          Retorno.Mensagem   := RestResponse1.Content;
+          Freeandnil(RestClient);
+          Freeandnil(Request);
+          FreeAndNil(Root);
+       End;
+    End;
+end;
+
+end.

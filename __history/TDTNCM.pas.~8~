@@ -1,0 +1,68 @@
+unit DTNCM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, System.Generics.Collections;
+
+type TRetornoNCM = class
+     DataUltimaAtualizacao:TDate;
+     NCM:string;
+     Descrica:String;
+     DataIniciao:TDate;
+     DataFim:TDate;
+     TipoAto:string;
+     NumeroAto:string;
+     AnoAto:string;
+end;
+
+type
+  TDTNcm = class(TComponent)
+  private
+
+  protected
+
+  public
+      RetornolistaNCM:TList<TRetornoNCM>;
+      function DownloadTabelaNCM:TRetornoNCM;
+      constructor Create(AOwner: TComponent); override;
+      destructor Destroy; override;
+
+  published
+
+
+  end;
+
+  const
+   URLBaseSiscomex = 'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json';
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('DT Inovacao', [TDTNcm]);
+end;
+
+{ TDTNcm }
+
+constructor TDTNcm.Create(AOwner: TComponent);
+begin
+ inherited Create(AOwner);
+  RetornolistaNCM := TList<TRetornoNCM>.Create;
+end;
+
+destructor TDTNcm.Destroy;
+begin
+  RetornolistaNCM.Clear;
+  FreeAndNil(RetornolistaNCM);
+  inherited Destroy;
+end;
+
+function TDTNcm.DownloadTabelaNCM: TRetornoNCM;
+begin
+
+end;
+
+end.

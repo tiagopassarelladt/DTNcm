@@ -1,0 +1,88 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'Demo Lista NCM API Siscomex'
+  ClientHeight = 349
+  ClientWidth = 570
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 13
+    Width = 31
+    Height = 13
+    Caption = 'Label1'
+  end
+  object Memo1: TMemo
+    Left = 0
+    Top = 39
+    Width = 289
+    Height = 310
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 288
+    Top = 8
+    Width = 96
+    Height = 25
+    Cursor = crHandPoint
+    Caption = 'Listar NCMS'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object DBGrid1: TDBGrid
+    Left = 288
+    Top = 39
+    Width = 274
+    Height = 310
+    DataSource = dsNCM
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object Button2: TButton
+    Left = 390
+    Top = 8
+    Width = 172
+    Height = 25
+    Caption = 'Exporta para Excel Leyout IBPT'
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object DTNcm1: TDTNcm
+    Left = 72
+    Top = 128
+  end
+  object cdsNcm: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 384
+    Top = 120
+    object cdsNcmNCM: TStringField
+      FieldName = 'NCM'
+      Size = 10
+    end
+    object cdsNcmDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 500
+    end
+  end
+  object dsNCM: TDataSource
+    DataSet = cdsNcm
+    Left = 448
+    Top = 120
+  end
+end
